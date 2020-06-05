@@ -32,13 +32,13 @@ export default class FormTest extends Component {
     const inputName = e.target.name;
 
     this.setState({[inputName]: inputValue}, () => {
-      console.log(this.state);
       this.handleError(inputName);
     });
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
+    document.querySelector(".form-section").innerHTML = `<p class="green">Submitted !</p>`
     console.log("submitted !")
   }
 
@@ -64,6 +64,8 @@ export default class FormTest extends Component {
     if (this.state.errEmail === false && this.state.errPassword1 === false && this.state.errPassword2 === false && this.state.errTerms === false) {
       this.setState({error: false})
     } else this.setState({error: true})
+
+    this.state.error === "false" && this.render();
   }
 
   render() {
@@ -75,8 +77,8 @@ export default class FormTest extends Component {
           <TextField name="lastName" label="Last Name" color="secondary" fullWidth={true} onChange={this.handleChange} />
 
           <TextField id="emailInput" name="email" label="Email" required={true} color="secondary" error={this.state.errEmail} fullWidth={true} onChange={this.handleChange}/>
-          <TextField id="password1Input" name="password1" type="password" label="Password" required={true} color="secondary" error fullWidth={true} onChange={this.handleChange}/>
-          <TextField id="password2Input" name="password2" type="password" label="Confirm Password" required={true} color="secondary" error fullWidth={true} onChange={this.handleChange}/>
+          <TextField id="password1Input" name="password1" type="password" label="Password" required={true} color="secondary" error={this.state.errPassword1} fullWidth={true} onChange={this.handleChange}/>
+          <TextField id="password2Input" name="password2" type="password" label="Confirm Password" required={true} color="secondary" error={this.state.errPassword2} fullWidth={true} onChange={this.handleChange}/>
 
 
           <FormControl>
@@ -104,6 +106,7 @@ export default class FormTest extends Component {
             labelPlacement="end"
             required={true}
             onChange={this.handleChange}
+            error={this.state.errTerms}
           />
 
           <Button className="button" variant="contained" disabled={this.state.error} onClick={this.handleSubmit}>
