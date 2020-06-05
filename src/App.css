@@ -1,0 +1,34 @@
+/* BASIC */
+.App{
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6, p, li, ul, ol, input, label, span{
+  margin: 0;
+}
+
+/* NO REPEAT CSS : FLEX / MARGIN */
+.flex{
+  display: flex;
+}
+
+.flexcol{
+  display: flex;
+  flex-direction: column;
+}
+
+.justcenter{
+  justify-content: center;
+}
+
+.alcenter{
+  align-items: center;
+}
+
+/* HEADER */
+
+/* MAIN */
+.main{
+  min-height: calc(100vh - 100px);
+  padding: 5rem;
+}
