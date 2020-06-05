@@ -1,29 +1,22 @@
 /// BASIC IMPORTS
 import React from 'react';
-import { Route, Switch } from "react-router-dom";
 
-/// PAGES & COMPONENTS
-import Home from "./views/Home";
-import Contact from "./views/Contact";
-import NotFound from "./views/NotFound";
-
+/// COMPONENTS
 import Header from "./components/Header";
+import Aside from "./components/Aside";
+import Test from "./components/Test";
 
 /// STYLING
 import './App.css';
-
 
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <main className="main flexcol">
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/contact" component={Contact} />
-          <Route path="*" component={NotFound} />
-        </Switch>
+      <main className="main">
+        <Aside />
+        <Test />
       </main>
     </div>
   );
