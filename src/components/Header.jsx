@@ -14,7 +14,7 @@ export default class Header extends Component {
       <div className="header flex alcenter">
         <div className="title flex alcenter">
           <FontAwesomeIcon className="fa-icon" icon={faReact}/>
-          <h1>Konexio Technical Test</h1>
+          <h1 className="nomarge">Konexio Technical Test</h1>
         </div>
         <p>Welcome to the technical test page !</p>
       </div>

@@ -9,7 +9,7 @@ import "../styles/Test.css"
 export default class Test extends Component {
   render() {
     return (
-      <div>
+      <div className="test-section">
         <DataTest data={jsonData} />
         <FormTest />
       </div>

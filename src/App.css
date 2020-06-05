@@ -4,14 +4,15 @@ html, body{
   padding: 0;
 }
 
+*{
+  box-sizing: border-box;
+}
+
 .App{
   min-height: 100vh;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6, p, li, ul, ol, input, label, span{
-  margin: 0;
-}
 
 :root{
   --pink: lightpink;
@@ -33,6 +34,10 @@ h1, h2, h3, h4, h5, h6, p, li, ul, ol, input, label, span{
 
 .alcenter{
   align-items: center;
+}
+
+.nomarge{
+  margin: 0;
 }
 
 /* HEADER */
@@ -60,10 +65,11 @@ h1, h2, h3, h4, h5, h6, p, li, ul, ol, input, label, span{
   padding: 3rem 5rem;
   display: grid;
   grid-template-columns: 1fr 3fr;
-  gap: 10%;
+  gap: 30px;
 }
 
 /* ASIDE */
 .aside{
   background-color: white;
+  position: sticky;
 }

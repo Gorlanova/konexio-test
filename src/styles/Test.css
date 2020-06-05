@@ -1,0 +1,35 @@
+.test-section{
+  background-color: white;
+  padding: 2rem 4rem;
+}
+
+section{
+  width: 100%;
+}
+
+.data-section span{
+  color: var(--pink);
+  animation: glow 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {text-shadow: none}
+  to {text-shadow: 0 0 20px var(--pink)}
+}
+
+.form-section p{
+  margin: 4rem 0 1rem;
+}
+
+.form-section form{
+  width: 350px;
+}
+
+.form-section form *{
+  margin: 0.2rem 0
+}
+
+.form-section .button{
+  margin-top: 2rem;
+  background-color: var(--pink);
+}
