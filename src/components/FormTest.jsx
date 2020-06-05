@@ -72,24 +72,26 @@ export default class FormTest extends Component {
     return (
       <div className="form-section">
         <p>Want to fill this gorgeous form ? Treat yourself :</p>
-        <form className="flexcol" action="" >
+        <form className="" action="" >
+
           <TextField name="firstName" label="First Name" color="secondary" fullWidth={true} onChange={this.handleChange}/>
+
           <TextField name="lastName" label="Last Name" color="secondary" fullWidth={true} onChange={this.handleChange} />
 
-          <TextField id="emailInput" name="email" label="Email" required={true} color="secondary" error={this.state.errEmail} fullWidth={true} onChange={this.handleChange}/>
-          <TextField id="password1Input" name="password1" type="password" label="Password" required={true} color="secondary" error={this.state.errPassword1} fullWidth={true} onChange={this.handleChange}/>
-          <TextField id="password2Input" name="password2" type="password" label="Confirm Password" required={true} color="secondary" error={this.state.errPassword2} fullWidth={true} onChange={this.handleChange}/>
-
-
           <FormControl>
-            <InputLabel id="status-label">Status</InputLabel>
+            <InputLabel id="status-label" color="secondary">Status</InputLabel>
             <Select labelId="status-label" name="status" color="secondary" fullWidth={true} defaultValue="" onChange={this.handleChange}>
               <MenuItem value={"Teacher"}>Teacher</MenuItem>
               <MenuItem value={"TA"}>Teacher Assistant</MenuItem>
               <MenuItem value={"Student"}>Student</MenuItem>
             </Select>
           </FormControl>
+          
+          <TextField id="emailInput" name="email" label="Email" required={true} color="secondary" error={this.state.errEmail} fullWidth={true} onChange={this.handleChange}/>
+        
+          <TextField id="password1Input" name="password1" type="password" label="Password" required={true} color="secondary" error={this.state.errPassword1} fullWidth={true} onChange={this.handleChange}/>
 
+          <TextField id="password2Input" name="password2" type="password" label="Confirm Password" required={true} color="secondary" error={this.state.errPassword2} fullWidth={true} onChange={this.handleChange}/>
 
           <FormControlLabel
             name="newsletter"
@@ -98,6 +100,7 @@ export default class FormTest extends Component {
             labelPlacement="end"
             onChange={this.handleChange}
           />
+
           <FormControlLabel
             id="termsInput"
             name="terms"

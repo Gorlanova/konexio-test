@@ -25,17 +25,23 @@ section{
 }
 
 .form-section form{
-  width: 300px;
+  display: grid;
+  grid-template-columns: repeat( auto-fit, minmax(250px, 1fr));
+  gap: 30px;
 }
 
 .form-section form *{
-  margin: 0.2rem 0;
   font-size: 0.8rem;
 }
 
 .form-section .button{
-  margin-top: 2rem;
   background-color: var(--pink);
+  border-radius: 0;
+  border: 1px solid black;
+  box-shadow: 5px 5px black !important;
+  font-weight: bold;
+  align-self: center;
+  grid-column: ;
 }
 
 .green{
