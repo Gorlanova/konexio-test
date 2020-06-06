@@ -19,53 +19,49 @@ export default class FormTest extends Component {
     password2: "",
     status: "",
     newsletter: "",
-    terms: "",
-    errEmail: true,
-    errPassword1: true,
-    errPassword2: true,
-    errTerms: true,
-    error: true
+    terms: ""
   }
 
   handleChange = (e) => {
     const inputValue = (e.target.name === "newsletter" || e.target.name === "terms") ? e.target.checked : e.target.value;
     const inputName = e.target.name;
 
-    this.setState({[inputName]: inputValue}, () => {
-      this.handleError(inputName);
-    });
+    this.setState({[inputName]: inputValue});
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
-    document.querySelector(".form-section").innerHTML = `<p class="green">Submitted !</p>`
-    console.log("submitted !")
+    document.querySelector(".form-section").innerHTML = `<p class="green">Submitted !</p>`;
   }
 
-  handleError = (keyword) => {
-    if (keyword === "email") {
-      this.state.email.length ? 
-        this.setState({errEmail: false})
-        : this.setState({errEmail: true});
-    } else if (keyword === "password1") {
-      this.state.password1.length ? 
-        this.setState({errPassword1: false})
-        : this.setState({errPassword1: true})
-    } else if (keyword === "password2") {
-      this.state.password2 === this.state.password1 ?
-        this.setState({errPassword2: false})
-        : this.setState({errPassword2: true})
-    } else if (keyword === "terms") {
-      this.state.terms ?
-        this.setState({errTerms: false})
-        : this.setState({errTerms: true})
-    }
+  checkEmail = () => {
+    if (this.state.email.length) {
+      return false
+    } else return true
+  }
 
-    if (this.state.errEmail === false && this.state.errPassword1 === false && this.state.errPassword2 === false && this.state.errTerms === false) {
-      this.setState({error: false})
-    } else this.setState({error: true})
+  checkPassword1 = () => {
+    if (this.state.password1.length) {
+      return false
+    } else return true
+  }
 
-    this.state.error === "false" && this.render();
+  checkPassword2 = () => {
+    if (this.state.password2 === this.state.password1) {
+      return false
+    } else return true
+  }
+
+  checkTerms = () => {
+    if (this.state.terms) {
+      console.log("yay terms")
+      return false
+    } else return true
+  }
+
+  checkError = () => {
+    console.log(this.state)
+    return !(this.checkEmail() && this.checkPassword1() && this.checkPassword2() && this.checkTerms())
   }
 
   render() {
@@ -87,11 +83,11 @@ export default class FormTest extends Component {
             </Select>
           </FormControl>
           
-          <TextField id="emailInput" name="email" label="Email" required={true} color="secondary" error={this.state.errEmail} fullWidth={true} onChange={this.handleChange}/>
+          <TextField id="emailInput" name="email" label="Email" required={true} color="secondary" error={this.checkEmail()} fullWidth={true} onChange={this.handleChange}/>
         
-          <TextField id="password1Input" name="password1" type="password" label="Password" required={true} color="secondary" error={this.state.errPassword1} fullWidth={true} onChange={this.handleChange}/>
+          <TextField id="password1Input" name="password1" type="password" label="Password" required={true} color="secondary" error={this.checkPassword1()} fullWidth={true} onChange={this.handleChange}/>
 
-          <TextField id="password2Input" name="password2" type="password" label="Confirm Password" required={true} color="secondary" error={this.state.errPassword2} fullWidth={true} onChange={this.handleChange}/>
+          <TextField id="password2Input" name="password2" type="password" label="Confirm Password" required={true} color="secondary" error={this.checkPassword2()} fullWidth={true} onChange={this.handleChange}/>
 
           <FormControlLabel
             name="newsletter"
@@ -109,10 +105,9 @@ export default class FormTest extends Component {
             labelPlacement="end"
             required={true}
             onChange={this.handleChange}
-            error={this.state.errTerms}
           />
 
-          <Button className="button" variant="contained" disabled={this.state.error} onClick={this.handleSubmit}>
+          <Button className="button" variant="contained" disabled={this.checkError()} onClick={this.handleSubmit}>
             Submit
           </Button>
 
