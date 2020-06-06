@@ -60,6 +60,10 @@ html, body{
   margin-right: 1rem;
 }
 
+.header h3{
+  font-style: italic;
+}
+
 /* MAIN */
 .main{
   background-color: var(--pink);

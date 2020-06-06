@@ -5,6 +5,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormHelperText from '@material-ui/core/FormHelperText';
 import Checkbox from '@material-ui/core/Checkbox';
 import Button from '@material-ui/core/Button';
 
@@ -18,15 +19,15 @@ export default class FormTest extends Component {
     password1: "",
     password2: "",
     status: "",
-    newsletter: "",
-    terms: ""
+    newsletter: false,
+    terms: false
   }
 
   handleChange = (e) => {
     const inputValue = (e.target.name === "newsletter" || e.target.name === "terms") ? e.target.checked : e.target.value;
     const inputName = e.target.name;
 
-    this.setState({[inputName]: inputValue});
+    this.setState({[inputName]: inputValue}, () => this.checkError());
   }
 
   handleSubmit = (e) => {
@@ -61,7 +62,7 @@ export default class FormTest extends Component {
 
   checkError = () => {
     console.log(this.state)
-    return !(this.checkEmail() && this.checkPassword1() && this.checkPassword2() && this.checkTerms())
+    return this.checkEmail() ? true : this.checkPassword1() ? true : this.checkPassword2() ? true : this.checkTerms() ? true : false
   }
 
   render() {
@@ -89,23 +90,30 @@ export default class FormTest extends Component {
 
           <TextField id="password2Input" name="password2" type="password" label="Confirm Password" required={true} color="secondary" error={this.checkPassword2()} fullWidth={true} onChange={this.handleChange}/>
 
-          <FormControlLabel
-            name="newsletter"
-            control={<Checkbox color="secondary" />}
-            label="I want to subscribe to the newsletter"
-            labelPlacement="end"
-            onChange={this.handleChange}
-          />
+          <FormControl>
+            <FormControlLabel
+              name="newsletter"
+              control={<Checkbox color="secondary" />}
+              label="I want to subscribe to the newsletter"
+              labelPlacement="end"
+              onChange={this.handleChange}
+            />
+            <FormHelperText></FormHelperText>
+          </FormControl>
+          
 
-          <FormControlLabel
-            id="termsInput"
-            name="terms"
-            control={<Checkbox color="secondary" />}
-            label="I have read terms and conditions"
-            labelPlacement="end"
-            required={true}
-            onChange={this.handleChange}
-          />
+          <FormControl required error={this.checkTerms()}>
+            <FormControlLabel
+              id="termsInput"
+              name="terms"
+              control={<Checkbox color="secondary" />}
+              label="I have read terms and conditions"
+              labelPlacement="end"
+              required={true}
+              onChange={this.handleChange}
+            />
+            <FormHelperText className="error-checkbox">You must agree to the terms and conditions</FormHelperText>
+          </FormControl>
 
           <Button className="button" variant="contained" disabled={this.checkError()} onClick={this.handleSubmit}>
             Submit

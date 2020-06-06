@@ -43,6 +43,12 @@ section{
   align-self: center;
 }
 
+.error-checkbox{
+  font-size: 0.6rem !important;
+  position: relative;
+  top: -1rem;
+}
+
 .green{
   color: mediumaquamarine;
 }

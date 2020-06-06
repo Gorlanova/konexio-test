@@ -16,7 +16,7 @@ export default class Header extends Component {
           <FontAwesomeIcon className="fa-icon" icon={faReact}/>
           <h1 className="nomarge">Konexio Technical Test</h1>
         </div>
-        <p>Welcome to the technical test page !</p>
+        <h3>Welcome to the technical test page !</h3>
       </div>
     )
   }
