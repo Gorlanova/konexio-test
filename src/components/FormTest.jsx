@@ -69,9 +69,8 @@ export default class FormTest extends Component {
         <p>Want to fill this gorgeous form ? Treat yourself :</p>
         
 
-        {!this.state.submitted ?
-
-          <form className="" action="" >
+        {!this.state.submitted &&
+          (<form className="" action="" >
 
             <TextField name="firstName" label="First Name" color="secondary" fullWidth={true} onChange={this.handleChange}/>
 
@@ -122,10 +121,11 @@ export default class FormTest extends Component {
             </Button>
 
           </form>
+        )}
 
-        : <h4 className="green-sent">Form sent !</h4>
-          
-        }
+        {this.state.submitted && (
+          <h4 className="green-sent">Form sent !</h4>
+        )}
       </div>
     )
   }
