@@ -49,6 +49,14 @@ section{
   top: -1rem;
 }
 
-.green{
+.green-sent{
+  margin: 0;
   color: mediumaquamarine;
+  animation: glow-green 0.8s ease-in-out infinite alternate;
 }
+
+@keyframes glow-green {
+  from {text-shadow: none}
+  to {text-shadow: 0 0 20px mediumaquamarine}
+}
+
