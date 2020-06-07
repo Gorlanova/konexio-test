@@ -36,33 +36,28 @@ export default class FormTest extends Component {
   }
 
   checkEmail = () => {
-    if (this.state.email.length) {
-      return false
-    } else return true
+    return !this.state.email.length
   }
 
   checkPassword1 = () => {
-    if (this.state.password1.length) {
-      return false
-    } else return true
+    return !this.state.password1.length
   }
 
   checkPassword2 = () => {
-    if (this.state.password2 === this.state.password1) {
-      return false
-    } else return true
+    return !(this.state.password2 === this.state.password1)
   }
 
   checkTerms = () => {
-    if (this.state.terms) {
-      console.log("yay terms")
-      return false
-    } else return true
+    return !this.state.terms
   }
 
   checkError = () => {
-    console.log(this.state)
-    return this.checkEmail() ? true : this.checkPassword1() ? true : this.checkPassword2() ? true : this.checkTerms() ? true : false
+    return (
+      this.checkEmail() ||
+      this.checkPassword1() ||
+      this.checkPassword2() ||
+      this.checkTerms()
+    )
   }
 
   render() {
